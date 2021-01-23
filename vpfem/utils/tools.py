@@ -1,15 +1,22 @@
-def dimension_checker(inputList, correctSize):
-    if len(inputList) != correctSize:
+from numpy import sqrt
+
+def dimension_checker(input_list, correct_size):
+    if len(input_list) != correct_size:
         raise Exception("Wrong dimention for this node")
-    return len(inputList)
+    return len(input_list)
 
-def int_type_checker(x):
-    if not type(x) is int:
-        raise TypeError("Only integers are allowed")
-    return x
+def int_type_checker(input_arg):
+    if not isinstance(input_arg, int):
+        raise Exception("Please enter integer")
+    return input_arg
 
-def check_size(x, limit):
-    if len(x) == limit:
-        return x
-    else:
+def check_size(input_list, limit):
+    if not len(input_list) == limit:
         raise Exception("Wrong number of inputs")
+    return input_list
+
+def distance_nodes(node_i, node_j):
+    sqrt_value = 0
+    for i in range(node_i.get_dim()):
+        sqrt_value += (node_i.coordinate[i] - node_j.coordinate[i])**2
+    return sqrt(sqrt_value)
